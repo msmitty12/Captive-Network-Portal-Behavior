@@ -13,7 +13,7 @@ The aim for this project is to define existing use cases for client devices and 
 
 - [Existing Device Behavior](#existing)
   - [All](#all)
-    -[Mobile](#mobile)
+    - [Mobile](#mobile)
       - [Apple](#apple)
         - [iOS](#ios)
         - [iOS 11+](#ios11)
@@ -25,7 +25,7 @@ The aim for this project is to define existing use cases for client devices and 
         - [Android 5](#android-5)
       - [Samsung](#samsung)
         - [Samsung Android](#samsung-android)
-    -[Desktop](#desktop)
+    - [Desktop](#desktop)
       - [Apple](#desktop-apple)
         - [MacOS](#macos)
       - [Microsoft](#microsoft)
@@ -105,7 +105,7 @@ The aim for this project is to define existing use cases for client devices and 
 - PostAuth experience – Once a user has successfully authenticated, the mini-browser may be hidden automatically or manually by pressing some special button.
 
 <a name="android-5"></a>
-#### Android 5.0.2
+##### Android 5.0.2
 - Google Chrome is opened instead of CPMB.
 
 <a name="samsung"></a>
@@ -127,7 +127,7 @@ The aim for this project is to define existing use cases for client devices and 
 #### Apple
 
 <a name="macos"></a>
-#### MacOS
+##### MacOS
 
 - Native Mini-Browser – AKA “Captive Network Assistant” (CNA) - Notifies user about the need to log in by pushing the OS-level mini browser.
 
