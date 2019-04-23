@@ -22,8 +22,9 @@ The aim for this project is to define existing use cases for client devices and 
         - [9(P)](#9P)
       - [Google](#google)
         - [Google Android](#google-android)
-        - [Samsung Android](#samsung-android)
         - [Android 5](#android-5)
+      - [Samsung](#samsung)
+        - [Samsung Android](#samsung-android)
     -[Desktop](#desktop)
       - [Apple](#desktop-apple)
         - [MacOS](#macos)
@@ -37,11 +38,12 @@ The aim for this project is to define existing use cases for client devices and 
         - [Linux (Chrome Browser Installed)](#linux-chrome)
       - [Amazon](#amazon)
         - [FireOS](#fireos)   
-- [List of captive portal check URLs](#urls)
+- [List of captive portal check URLs](#captive-portal-urls)
 - [Code of Conduct](#conduct)
 - [License](#license)
 
 
+<a name="existing"></a>
 ## Existing Device Behavior
 
 <a name="all"></a>
@@ -55,11 +57,14 @@ The aim for this project is to define existing use cases for client devices and 
 
 - Most of external services (file system, applications and etc.) are not accessible from SPMB [Add in this section some information about differences between devices behavior in PreAuth vs PostAuth along with some special limitations of CNA and CPMB: memory usage, local storage, JS support and etc.]
 
+<a name="desktop"></a>
+### Desktop
+
 <a name="apple"></a>
-### Apple
+#### Apple
 
 <a name="ios"></a>
-#### iOS
+##### iOS
 
 - Standard flow for Captive Network authorization process starts from the Wi-Fi association process. It doesn’t matter what kind of Wi-Fi association protocol is used (Hotspot 2.0 or older one): in all cases just after the association is complete, the device making a request for IP-address (DHCP DISCOVER).
 
@@ -77,41 +82,42 @@ The aim for this project is to define existing use cases for client devices and 
 
 
 <a name="ios11"></a>
-#### iOS 11+
+##### iOS 11+
 - (VPN or some other software that blocks Captive Detector Installed)
 - Normally, there is a local Push-notification raise instead of CPMB.
 
 
 <a name="ios6"></a>
-#### iOS 6+
+##### iOS 6+
 
 - (Switched off the “Auto-connect” selector in the Wi-Fi SSID settings.)
 -There is no CPMB rising. Manual redirection is needed.
 
 
 <a name="google"></a>
-### Google
+#### Google
 
-<a name="google_android"></a>
-#### Google Android (Pixel, Pixel2, Pixel3)
+<a name="google-android"></a>
+##### Google Android (Pixel, Pixel2, Pixel3)
 
 - The Android OS determines the existence of the captive portal by attempting to access a list of domains (See appendix for complete list). If the domains are accessible, it can assume that it is not constrained by a captive portal. Otherwise, it will trigger the notification.
 - When clicked, users are being redirected to CPMB.
 - PostAuth experience – Once a user has successfully authenticated, the mini-browser may be hidden automatically or manually by pressing some special button.
 
+<a name="android-5"></a>
+#### Android 5.0.2
+- Google Chrome is opened instead of CPMB.
 
-<a name="samsung_android"></a>
-#### Samsung Android
+<a name="samsung"></a>
+#### Samsung
+
+<a name="samsung-android"></a>
+##### Samsung Android
 
 - Active Captive Portal - Notifies user about the need to log in by pushing the OS-level mini browser.
 -The Android OS determines the existence of the captive portal by attempting to access a list of domains (See appendix for complete list). If the domains are accessible, it can assume that it is not constrained by a captive portal. Otherwise, it will pops up Captive Portal or Full browser.
 -Post-auth experience – Once a user has successfully authenticated, the mini-browser may be hidden automatically or manually by pressing some special button.
 -It can be artificial ad block on CPMB in some Android devices.
-
-<a name="android_5"></a>
-### Android 5.0.2
-
-- Google Chrome is opened instead of CPMB.
 
 
 <a name="desktop"></a>
@@ -187,10 +193,8 @@ The aim for this project is to define existing use cases for client devices and 
 - www.thinkdifferent.us
 - apple.com
 
-
 ### Apple MacOS
 - captive.apple.com
-
 
 ### Google Android
 - clients3.google.com
@@ -202,12 +206,10 @@ The aim for this project is to define existing use cases for client devices and 
 - www.google.com
 - www.androidbak.net
 
-
 ### Samsung Android
 - http://connectivitycheck.android.com/generate_204
 - http://connectivitycheck.gstatic.com/generate_204
 - d2uzsrnmmf6tds.cloudfront.net
-
 
 ### HTC Android
 - clients3.google.com
