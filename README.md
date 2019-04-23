@@ -13,17 +13,33 @@ The aim for this project is to define existing use cases for client devices and 
 
 - [Existing Device Behavior](#existing)
   - [All](#all)
-  - [Apple](#apple)
-    - [iOS](#ios)
-    - [iOS 11+](#ios11)
-    - [iOS 6+](#ios6)
-    - [MacOS](#macos)
-  - [Android](#android)
-    - [9(P)](#9P)
-  - [Google](#google)
-    - [Pixel,Pixel2](#pixel)
+    -[Mobile](#mobile)
+      - [Apple](#apple)
+        - [iOS](#ios)
+        - [iOS 11+](#ios11)
+        - [iOS 6+](#ios6)
+      - [Android](#android)
+        - [9(P)](#9P)
+      - [Google](#google)
+        - [Google Android](#google-android)
+        - [Samsung Android](#samsung-android)
+        - [Android 5](#android-5)
+    -[Desktop](#desktop)
+      - [Apple](#desktop-apple)
+        - [MacOS](#macos)
+      - [Microsoft](#microsoft)
+        - [Windows 10](#windows10)
+      - [Google](#desktop-google)
+        - [ChromeOS](#chromeos)
+      - [Linux](#linux)
+        - [Ubuntu](#ubuntu)
+        - [Linux (Firefox Browser Installed)](#linux-firefox)
+        - [Linux (Chrome Browser Installed)](#linux-chrome)
+      - [Amazon](#amazon)
+        - [FireOS](#fireos)   
 - [List of captive portal check URLs](#urls)
-
+- [Code of Conduct](#conduct)
+- [License](#license)
 
 
 ## Existing Device Behavior
@@ -73,26 +89,138 @@ The aim for this project is to define existing use cases for client devices and 
 -There is no CPMB rising. Manual redirection is needed.
 
 
+<a name="google"></a>
+### Google
+
+<a name="google_android"></a>
+#### Google Android (Pixel, Pixel2, Pixel3)
+
+- The Android OS determines the existence of the captive portal by attempting to access a list of domains (See appendix for complete list). If the domains are accessible, it can assume that it is not constrained by a captive portal. Otherwise, it will trigger the notification.
+- When clicked, users are being redirected to CPMB.
+- PostAuth experience – Once a user has successfully authenticated, the mini-browser may be hidden automatically or manually by pressing some special button.
+
+
+<a name="samsung_android"></a>
+#### Samsung Android
+
+- Active Captive Portal - Notifies user about the need to log in by pushing the OS-level mini browser.
+-The Android OS determines the existence of the captive portal by attempting to access a list of domains (See appendix for complete list). If the domains are accessible, it can assume that it is not constrained by a captive portal. Otherwise, it will pops up Captive Portal or Full browser.
+-Post-auth experience – Once a user has successfully authenticated, the mini-browser may be hidden automatically or manually by pressing some special button.
+-It can be artificial ad block on CPMB in some Android devices.
+
+<a name="android_5"></a>
+### Android 5.0.2
+
+- Google Chrome is opened instead of CPMB.
+
+
+<a name="desktop"></a>
+### Desktop
+
+<a name="desktop-apple"></a>
+#### Apple
+
 <a name="macos"></a>
 #### MacOS
 
 - Native Mini-Browser – AKA “Captive Network Assistant” (CNA) - Notifies user about the need to log in by pushing the OS-level mini browser.
 
 
-<a name="google"></a>
-### Google
+<a name="microsoft"></a>
+#### Microsoft
 
-<a name="google_android"></a>
-#### Google Android
+<a name="windows10"></a>
+##### Windows 10
 
-- The Android OS determines the existence of the captive portal by attempting to access a list of domains (See appendix for complete list). If the domains are accessible, it can assume that it is not constrained by a captive portal. Otherwise, it will trigger the notification.
-- When clicked, users are being redirected to CPMB.
-- PostAuth experience – Once a user has successfully authenticated, the mini-browser may be hidden automatically or manually by pressing some special button.
+- Notifies user about the need to log in by opening the user’s default browser and attempting to redirect the user to a default HTTP destination which should be intercepted by the network.
 
+
+<a name="desktop-google"></a>
+#### Google
+
+<a name="chromeos"></a>
+##### Chrome OS
+
+- Connection manager for Chromium OS attempts to retrieve the web page [http://clients3.google.com/generate_204](ttp://clients3.google.com/generate_204). This well known URL is known to return an empty page with an HTTP status 204. If for any reason the web page is not returned, or an HTTP response other than 204 is received, then shill marks the service as being in the portal state.
+- Other captive portals, sometimes run by cellular carriers, provide absolutely no IP connectivity other than to their own servers, but they use a standard DNS server and do not intercept HTTP requests. When a Chrome Book connects to this type of network, the HTTP requests fail because the TCP connection to clients3.google.com can never be established. The portal code tries multiple times for up to 10 seconds to connect to clients3.google.com. If it cannot connect it marks the service as being in a captive portal. This determination is somewhat unreliable because very high latency connections, lossy connections and other network issues can also result in failure to connect to clients3.google.com. All of these are indicative of a network that is not fully functional, but they do not necessarily indicate that the machine is stuck in a captive portal.
+
+<a name="linux"></a>
+#### Linux
+
+<a name="ubuntu"></a>
+##### Ubuntu
+
+- Doesn’t support OS level captive portal login in available LTS (long term support) releases so far. Now there is a discussion in Ubuntu WiKi networking section where it is proposed to provide OS level support in coming releases. GNOME (GNU Network Object Model Environment) had introduced automatic login prompt for Wi-Fi captive portals (Wi-Fi access points which required web based login, such as those found in public places) quite a while ago. However this functionality is still unavailable in Ubuntu GNOME, The same is part of wish-list in upcoming Ubuntu LTS releases.
+
+<a name="linux-firefox"></a>
+#### Linux (Firefox Browser Installed)
+
+- Firefox introduces automatic detection of Captive portals and notifies user about the need to log in. Additionally, after Firefox detects a Captive portal, it replaces certificate error pages with a message encouraging user to log in.
+- Firefox determines the existence of a captive portal constraint by attempting to download the file success.txt from http://detectportal.firefox.com/success.txt (there is only one word in that file, the word "success". If it can successfully retrieve that file, it can assume that it is not constrained by a Captive portal. Otherwise, it will trigger an in-browser notification.
+
+<a name="linux-chrome"></a>
+#### Linux (Chrome Browser Installed)
+
+-Chrome introduces automatic detection of Captive portals and notifies user about the need to log in. Additionally, after Chrome detects a Captive portal, it replaces certificate error pages with a message encouraging user to log in.
+
+<a name="amazon"></a>
+#### Amazon
+
+<a name="fireos"></a>
+##### FireOS
+
+- Fire OS (based on Android) uses http://spectrum.s3.amazonaws.com/kindle-wifi/wifistub.html for connectivity checks and if the URI is not reachable, a notification appears indicating a captive portal login is required.
+- Tapping the notifications triggers the the captive portal mini-browser to open, the device attempts to reach http://spectrum.s3.amazonaws.com/kindle-wifi/wifiredirect.html and the user is greeted with “Unsecured Connection. This connection is not secure. When using an unsecured connection, your personal information may be visible to others.” After clicking continue, the captive portal loads.
+- The Unsecured Connection warning appears to be triggered by the attempt to hit the “wifiredirect” page over HTTP, not because of a TLS certificate mismatch.
+
+
+<a name="captive-portal-urls"></a>
+## List of captive portal check URLs
+
+### Apple iOS
+- www.apple.com
+- www.appleiphonecell.com
+- captive.apple.com
+- www.airport.us
+- www.ibook.info
+- www.itools.info
+- www.thinkdifferent.us
+- apple.com
+
+
+### Apple MacOS
+- captive.apple.com
+
+
+### Google Android
+- clients3.google.com
+- clients4.google.com
+- android.clients.google.com
+- connectivitycheck.android.com
+- connectivitycheck.gstatic.com
+- www.gstatic.com
+- www.google.com
+- www.androidbak.net
+
+
+### Samsung Android
+- http://connectivitycheck.android.com/generate_204
+- http://connectivitycheck.gstatic.com/generate_204
+- d2uzsrnmmf6tds.cloudfront.net
+
+
+### HTC Android
+- clients3.google.com
+
+### Windows
+- msftncsi.com
+
+<a name="conduct"></a>
 ## Code of Conduct
 
 Please note that this project is released with a [Contributor Code of Conduct](code-of-conduct.md). By participating in this project you agree to abide by its terms.
 
+<a name="license"></a>
 ## License
 
 [![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
