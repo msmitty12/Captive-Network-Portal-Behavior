@@ -220,7 +220,7 @@ The aim for this project is to define existing use cases for client devices and 
 <a name="conduct"></a>
 ## Code of Conduct
 
-Please note that this project is released with a [Contributor Code of Conduct](code-of-conduct.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](CODE-OF-CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 <a name="license"></a>
 ## License
