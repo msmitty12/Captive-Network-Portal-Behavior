@@ -4,7 +4,7 @@
 
 ## Background
 
-Public Wi-Fi networks offering short-term or temporary internet access commonly begin new connections using a Captive Portal Mini-Browser. This also happens in fixed and cellular networks in the case of insufficient balance for prepaid tariff plans. Each platform has a native version that is “baked” into the OS. There are also commercial browsers, like Firefox and Chrome that have this built-in support to detect and navigate the Captive Portal. This mode uses a web-view pushed to the client and has limited capabilities for branding, advertising & other monetization tactics along with limited capabilities with special authorization processes and paid access.
+Public Wi-Fi networks offering short-term or temporary internet access commonly begin new connections using a Captive Portal Mini-Browser. This also happens in fixed and cellular networks in the case of insufficient balance for prepaid tariff plans. Each platform has a native version that is "baked" into the OS. There are also commercial browsers, like Firefox and Chrome that have this built-in support to detect and navigate to the Captive Portal. This mode uses a web-view pushed to the client and has limited capabilities for branding, advertising and other monetization tactics along with limited capabilities with special authorization processes and paid access.
 
 The aim for this project is to define existing use cases for client devices and client manufacturers. 
 
@@ -55,7 +55,7 @@ The aim for this project is to define existing use cases for client devices and 
 
 - The CPMB disappears and the device disconnects from the network when focus is changed to another app, such as SMS or email.
 
-- Most of external services (file system, applications and etc.) are not accessible from SPMB [Add in this section some information about differences between devices behavior in PreAuth vs PostAuth along with some special limitations of CNA and CPMB: memory usage, local storage, JS support and etc.]
+- Most of external services (file system, applications and etc.) are not accessible from CPMB [Add in this section some information about differences between devices behavior in PreAuth vs PostAuth along with some special limitations of CNA and CPMB: memory usage, local storage, JS support and etc.]
 
 <a name="desktop"></a>
 ### Desktop
